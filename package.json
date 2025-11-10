@@ -1,0 +1,38 @@
+{
+  "name": "coaxx",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static",
+    "wrangler": "wrangler"
+  },
+  "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16",
+    "@stripe/stripe-js": "^8.3.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.553.0",
+    "next": "16.0.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-hot-toast": "^2.6.0",
+    "stripe": "^19.3.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251109.0",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wrangler": "^4.46.0"
+  }
+}

@@ -1,0 +1,23 @@
+name = "coaxx"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = ".vercel/output/static"
+
+# D1 Database bindings
+[[d1_databases]]
+binding = "DB"
+database_name = "coaxx-db"
+database_id = "YOUR_DATABASE_ID"
+
+# R2 Storage bindings
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "coaxx-images"
+
+# Environment variables
+[vars]
+STRIPE_WEBHOOK_SECRET = ""
+STRIPE_PUBLIC_KEY = ""
+
+# Production environment secrets (use wrangler secret put)
+# STRIPE_SECRET_KEY
+# ADMIN_PASSWORD_HASH
