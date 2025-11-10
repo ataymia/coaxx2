@@ -5,12 +5,29 @@ export interface Product {
   price: number;
   sale_price?: number | null;
   stock_quantity: number;
+  low_stock_threshold?: number;
   image_url?: string;
   images?: string[];
   featured?: boolean;
+  is_deal?: boolean;
+  is_new?: boolean;
+  sizes?: string[];
+  care_instructions?: string;
+  specifications?: Record<string, string>;
   tags?: Tag[];
+  collections?: Collection[];
   created_at?: string;
   updated_at?: string;
+}
+
+export interface Collection {
+  id: string;
+  name: string;
+  slug: string;
+  description?: string;
+  image_url?: string;
+  featured?: boolean;
+  created_at?: string;
 }
 
 export interface Tag {

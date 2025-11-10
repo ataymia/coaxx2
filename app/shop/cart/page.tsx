@@ -142,14 +142,17 @@ export default function CartPage() {
                 </span>
               </div>
               <div className="flex justify-between text-gray-700">
-                <span>Tax</span>
+                <span>Estimated Tax</span>
                 <span className="font-medium">{formatPrice(tax)}</span>
               </div>
               {subtotal < 100 && shipping > 0 && (
-                <div className="text-sm text-gray-600 bg-gray-50 p-3 rounded">
-                  Add {formatPrice(100 - subtotal)} more for free shipping!
+                <div className="text-sm text-gray-600 bg-amber-50 p-3 rounded border border-amber-200">
+                  💡 Add {formatPrice(100 - subtotal)} more for free shipping!
                 </div>
               )}
+              <div className="text-xs text-gray-500 italic">
+                * Tax and shipping calculated at checkout
+              </div>
               <div className="border-t border-gray-200 pt-4">
                 <div className="flex justify-between text-xl font-bold text-gray-900">
                   <span>Total</span>

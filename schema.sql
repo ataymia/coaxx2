@@ -6,11 +6,28 @@ CREATE TABLE IF NOT EXISTS products (
   price REAL NOT NULL,
   sale_price REAL,
   stock_quantity INTEGER NOT NULL DEFAULT 0,
+  low_stock_threshold INTEGER DEFAULT 10,
   image_url TEXT,
   images TEXT, -- JSON array of image URLs
   featured BOOLEAN DEFAULT 0,
+  is_deal BOOLEAN DEFAULT 0,
+  is_new BOOLEAN DEFAULT 0,
+  sizes TEXT, -- JSON array of available sizes
+  care_instructions TEXT,
+  specifications TEXT, -- JSON object for specs
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Collections table
+CREATE TABLE IF NOT EXISTS collections (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,
+  slug TEXT NOT NULL UNIQUE,
+  description TEXT,
+  image_url TEXT,
+  featured BOOLEAN DEFAULT 0,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Tags table
@@ -19,6 +36,15 @@ CREATE TABLE IF NOT EXISTS tags (
   name TEXT NOT NULL UNIQUE,
   slug TEXT NOT NULL UNIQUE,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Product-Collection relationship table
+CREATE TABLE IF NOT EXISTS product_collections (
+  product_id TEXT NOT NULL,
+  collection_id TEXT NOT NULL,
+  PRIMARY KEY (product_id, collection_id),
+  FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+  FOREIGN KEY (collection_id) REFERENCES collections(id) ON DELETE CASCADE
 );
 
 -- Product-Tag relationship table
@@ -79,6 +105,11 @@ CREATE TABLE IF NOT EXISTS deals (
 
 -- Indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_products_featured ON products(featured);
+CREATE INDEX IF NOT EXISTS idx_products_deal ON products(is_deal);
+CREATE INDEX IF NOT EXISTS idx_products_new ON products(is_new);
+CREATE INDEX IF NOT EXISTS idx_collections_slug ON collections(slug);
+CREATE INDEX IF NOT EXISTS idx_product_collections_product ON product_collections(product_id);
+CREATE INDEX IF NOT EXISTS idx_product_collections_collection ON product_collections(collection_id);
 CREATE INDEX IF NOT EXISTS idx_product_tags_product ON product_tags(product_id);
 CREATE INDEX IF NOT EXISTS idx_product_tags_tag ON product_tags(tag_id);
 CREATE INDEX IF NOT EXISTS idx_orders_session ON orders(stripe_session_id);

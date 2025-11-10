@@ -71,10 +71,20 @@ export default function SuccessPage() {
         </div>
       </div>
 
-      {/* You Might Also Like */}
+      {/* Discreet Shipping Reminder */}
+      <div className="bg-gradient-to-r from-red-50 to-amber-50 rounded-lg p-6 mb-12 text-center">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+          📦 Discreet Shipping Confirmation
+        </h3>
+        <p className="text-gray-700">
+          Your order will arrive in plain, unmarked packaging. Thank you for shopping with Coaxx!
+        </p>
+      </div>
+
+      {/* You Might Also Like - From Same Collection */}
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">You Might Also Like</h2>
-        <p className="text-gray-600 mb-6">Check out these similar products</p>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Complete Your Collection</h2>
+        <p className="text-gray-600 mb-6">Similar styles you might love</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
