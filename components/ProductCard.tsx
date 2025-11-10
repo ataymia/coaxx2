@@ -7,6 +7,7 @@ import { Product } from '@/types';
 import { formatPrice, calculateDiscountPercent } from '@/lib/utils';
 import { useCartStore } from '@/lib/cart-store';
 import toast from 'react-hot-toast';
+import Badge from './Badge';
 
 interface ProductCardProps {
   product: Product;
@@ -20,6 +21,14 @@ export default function ProductCard({ product }: ProductCardProps) {
   const discountPercent = hasDiscount 
     ? calculateDiscountPercent(product.price, product.sale_price!)
     : 0;
+  
+  const isLowStock = product.stock_quantity > 0 && product.stock_quantity <= 10;
+  const isSoldOut = product.stock_quantity <= 0;
+  
+  // Calculate isNew using a stable date
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  const isNew = product.created_at && new Date(product.created_at) > sevenDaysAgo;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -36,7 +45,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Link href={`/shop/product/${product.id}`} className="group">
-      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
         {/* Product Image */}
         <div className="relative aspect-square bg-gray-100">
           {product.image_url ? (
@@ -53,15 +62,18 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
           
-          {hasDiscount && (
-            <div className="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-sm font-bold">
-              {discountPercent}% OFF
-            </div>
-          )}
+          {/* Badges */}
+          <div className="absolute top-2 left-2 flex flex-col gap-2">
+            {hasDiscount && (
+              <Badge type="deal" text={`${discountPercent}% OFF`} />
+            )}
+            {isNew && !hasDiscount && <Badge type="new" />}
+            {isLowStock && !isSoldOut && <Badge type="low-stock" />}
+          </div>
           
-          {product.stock_quantity <= 0 && (
+          {isSoldOut && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">OUT OF STOCK</span>
+              <Badge type="sold-out" className="text-lg px-4 py-2" />
             </div>
           )}
         </div>
