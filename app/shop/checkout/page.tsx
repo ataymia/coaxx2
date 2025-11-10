@@ -3,14 +3,12 @@
 import { useState } from 'react';
 import { useCartStore } from '@/lib/cart-store';
 import { formatPrice } from '@/lib/utils';
-import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CheckoutPage() {
-  const { items, total, clearCart } = useCartStore();
-  const router = useRouter();
+  const { items, total } = useCartStore();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',

@@ -1,12 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
+
+interface CheckoutItem {
+  product_id: string;
+  product_name: string;
+  quantity: number;
+  price: number;
+}
+
+interface CheckoutBody {
+  items: CheckoutItem[];
+  customer: {
+    email: string;
+    name: string;
+    address: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+  };
+}
 
 // This would normally get STRIPE_SECRET_KEY from environment
 // For demo purposes, we'll return a mock response
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json() as { items: any[], customer: any };
-    const { items, customer } = body;
+    // Parse request body
+    await request.json() as CheckoutBody;
 
     // In production, this would create a real Stripe checkout session
     // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {

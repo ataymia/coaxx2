@@ -46,7 +46,7 @@ function SearchResults({ searchParams }: { searchParams: { q?: string } }) {
   if (results.length === 0) {
     return (
       <div className="text-center py-20">
-        <p className="text-xl text-gray-600">No products found for "{query}"</p>
+        <p className="text-xl text-gray-600">No products found for &quot;{query}&quot;</p>
         <p className="text-gray-500 mt-2">Try searching with different keywords</p>
       </div>
     );
@@ -56,7 +56,7 @@ function SearchResults({ searchParams }: { searchParams: { q?: string } }) {
     <>
       <div className="mb-6">
         <p className="text-gray-600">
-          Found {results.length} result{results.length !== 1 ? 's' : ''} for "{query}"
+          Found {results.length} result{results.length !== 1 ? 's' : ''} for &quot;{query}&quot;
         </p>
       </div>
 
@@ -69,17 +69,18 @@ function SearchResults({ searchParams }: { searchParams: { q?: string } }) {
   );
 }
 
-export default function SearchPage({
+export default async function SearchPage({
   searchParams,
 }: {
   searchParams: Promise<{ q?: string }>;
 }) {
+  const params = await searchParams;
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h1 className="text-4xl font-bold text-gray-900 mb-8">Search Results</h1>
       
       <Suspense fallback={<div>Loading...</div>}>
-        <SearchResults searchParams={searchParams as any} />
+        <SearchResults searchParams={params} />
       </Suspense>
     </div>
   );

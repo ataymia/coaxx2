@@ -52,7 +52,7 @@ export default function SuccessPage() {
           Thank you for your purchase. Your order has been successfully placed.
         </p>
         <p className="text-gray-700 mb-8">
-          We've sent a confirmation email with your order details and receipt.
+          We&apos;ve sent a confirmation email with your order details and receipt.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

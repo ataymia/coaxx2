@@ -1,13 +1,17 @@
-import type { Product, Tag, Order, OrderItem, Deal } from '@/types';
+import type { Product, Tag, Order, OrderItem } from '@/types';
+
+interface DbRow {
+  [key: string]: unknown;
+}
 
 export async function getProducts(db: D1Database): Promise<Product[]> {
   const { results } = await db.prepare(
     'SELECT * FROM products ORDER BY created_at DESC'
   ).all();
   
-  return ((results || []) as any[]).map((row: any) => ({
+  return ((results || []) as DbRow[]).map((row: DbRow) => ({
     ...row,
-    images: row.images ? JSON.parse(row.images) : [],
+    images: row.images ? JSON.parse(row.images as string) : [],
     featured: Boolean(row.featured),
   })) as Product[];
 }
@@ -42,9 +46,9 @@ export async function getFeaturedProducts(db: D1Database): Promise<Product[]> {
     'SELECT * FROM products WHERE featured = 1 ORDER BY created_at DESC LIMIT 8'
   ).all();
   
-  return ((results || []) as any[]).map((row: any) => ({
+  return ((results || []) as DbRow[]).map((row: DbRow) => ({
     ...row,
-    images: row.images ? JSON.parse(row.images) : [],
+    images: row.images ? JSON.parse(row.images as string) : [],
     featured: Boolean(row.featured),
   })) as Product[];
 }
@@ -58,9 +62,9 @@ export async function searchProducts(db: D1Database, query: string): Promise<Pro
      ORDER BY p.created_at DESC`
   ).bind(`%${query}%`, `%${query}%`, `%${query}%`).all();
   
-  return ((results || []) as any[]).map((row: any) => ({
+  return ((results || []) as DbRow[]).map((row: DbRow) => ({
     ...row,
-    images: row.images ? JSON.parse(row.images) : [],
+    images: row.images ? JSON.parse(row.images as string) : [],
     featured: Boolean(row.featured),
   })) as Product[];
 }
@@ -74,9 +78,9 @@ export async function getProductsByTag(db: D1Database, tagSlug: string): Promise
      ORDER BY p.created_at DESC`
   ).bind(tagSlug).all();
   
-  return ((results || []) as any[]).map((row: any) => ({
+  return ((results || []) as DbRow[]).map((row: DbRow) => ({
     ...row,
-    images: row.images ? JSON.parse(row.images) : [],
+    images: row.images ? JSON.parse(row.images as string) : [],
     featured: Boolean(row.featured),
   })) as Product[];
 }

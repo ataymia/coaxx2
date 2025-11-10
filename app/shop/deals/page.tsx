@@ -42,7 +42,7 @@ export default function DealsPage() {
         <Percent className="h-16 w-16 mx-auto mb-4" />
         <h1 className="text-5xl font-bold mb-4">Amazing Deals</h1>
         <p className="text-xl mb-2">Save big on our hottest products!</p>
-        <p className="text-lg opacity-90">Limited time offers - Don't miss out!</p>
+        <p className="text-lg opacity-90">Limited time offers - Don&apos;t miss out!</p>
       </div>
 
       {/* Deals Info */}
@@ -57,7 +57,7 @@ export default function DealsPage() {
         </div>
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
           <div className="text-3xl font-bold text-gray-700 mb-2">24/7 Support</div>
-          <p className="text-gray-600">We're here to help</p>
+          <p className="text-gray-600">We&apos;re here to help</p>
         </div>
       </div>
 
