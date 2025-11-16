@@ -1,6 +1,6 @@
-# Coaxx - Static E-Commerce Website
+# Coaxx - Boutique Intimacy Shop
 
-A fully static e-commerce website for premium lingerie and intimate apparel. No build process, no server required - just open `index.html` in your browser!
+A fully static e-commerce website for Coaxx, a modern boutique intimacy store featuring curated products, collections, and discreet shopping experience. No build process, no server required - pure HTML, CSS, and vanilla JavaScript!
 
 ## 🚀 Quick Start
 
@@ -31,51 +31,65 @@ A fully static e-commerce website for premium lingerie and intimate apparel. No 
 
 ```
 coaxx/
-├── index.html          # Homepage
-├── shop.html           # All products page
-├── deals.html          # Special deals and discounts
-├── collections.html    # Product collections
-├── search.html         # Search results page
+├── index.html          # Homepage with hero, collections, featured products
+├── shop.html           # Product catalog with filters
 ├── product.html        # Product detail page
 ├── cart.html           # Shopping cart
 ├── checkout.html       # Checkout page
-├── success.html        # Order confirmation
-├── about.html          # About us
-├── contact.html        # Contact page
-├── privacy.html        # Privacy policy
-├── terms.html          # Terms of service
-├── shipping.html       # Shipping information
-├── styles.css          # All styles (Tailwind-inspired utilities)
-├── main.js             # All JavaScript functionality
-└── assets/             # Static assets (images, icons, etc.)
+├── collections.html    # Featured collections page
+├── deals.html          # Sale items
+├── search.html         # Search results
+├── about.html          # About Coaxx
+├── admin.html          # Admin dashboard (password protected)
+├── styles.css          # All styles with Coaxx branding
+├── app.js              # Storefront logic (cart, products, filters)
+├── admin.js            # Admin dashboard logic
+├── products.json       # Product catalog (21 products across all categories)
+└── [other pages]       # Additional content pages
 ```
 
 ## ✨ Features
 
-### Storefront
-- **Homepage** - Hero section with featured content
-- **Product Catalog** - Browse all products with filtering
-- **Search** - Full-text search across products
-- **Collections** - Browse by categories
-- **Deals** - Special offers and discounted products
-- **Product Details** - Comprehensive product pages
-- **Shopping Cart** - Persistent cart using localStorage
-- **Responsive Design** - Mobile-first, works on all devices
+### Brand & Positioning
+- **Coaxx Brand** - Modern, sultry boutique intimacy shop
+- **Woman-centered** - Inclusive to all genders and orientations
+- **Privacy-first** - Discreet shipping, billing, and packaging
+- **Body-safe** - Only premium, safe materials
+- **Curated Collections** - Four signature collections for different comfort levels
 
-### Interactive Features
-- **Age Gate** - Age verification modal (required for adult content)
-- **Hot Items Ticker** - Animated banner showing deals
-- **Cart Management** - Add, remove, update quantities
-- **Toast Notifications** - User feedback for actions
-- **Search Functionality** - Real-time product search
-- **Mobile Menu** - Collapsible navigation for mobile
+### Storefront Features
+- **Homepage** - Hero section, trust strip, featured collections, featured products
+- **Product Catalog** - 21 curated intimacy products across 6 categories
+- **Smart Filtering** - Filter by category, collection, experience level
+- **Sale Pricing** - Automatic discount calculation and display
+- **Collections** - Barely Proper, Pretty Ruthless, Femme Obscura, Noir Siren
+- **Shopping Cart** - Persistent cart using localStorage as `coaxxCart`
+- **External Checkout** - Support for Stripe Payment Links, PayPal, Cash App
+- **Age Verification** - Age gate modal for adult content compliance
+
+### Admin Dashboard (admin.html)
+- **Password Protected** - Simple password gate (default: `coaxx2025`)
+- **Product Management** - Add, edit, delete products with full form
+- **Category & Collection Management** - Organize products
+- **Draft System** - Save changes to localStorage before committing
+- **JSON Export** - Download updated products.json for manual commit
+- **Filters** - Search and filter products in admin view
+- **No Backend Required** - Everything runs client-side
+
+### Product Features
+- **Experience Levels** - Beginner, Intermediate, Advanced tags
+- **Material Safety** - Body-safe materials listed for each product
+- **Care Instructions** - Proper care and maintenance notes
+- **Size Options** - Inclusive sizing for lingerie
+- **Subscription Products** - Monthly and quarterly subscription boxes
+- **Bundle Products** - Curated kits and collections
 
 ### Design & UX
-- **Color Scheme** - Red (#dc2626), Gold/Amber (#d97706), Gray (#6b7280)
-- **Responsive** - Optimized for desktop, tablet, and mobile
-- **Accessible** - Semantic HTML, keyboard navigation
-- **Fast Loading** - Pure HTML/CSS/JS, no framework overhead
-- **Smooth Animations** - CSS transitions and keyframe animations
+- **Color Palette** - Deep red (#dc2626), luminous gold (#d97706), charcoal (#374151)
+- **Sultry Aesthetic** - Gradient backgrounds, elegant typography
+- **Fully Responsive** - Mobile-first design
+- **No Explicit Language** - Classy, sophisticated product descriptions
+- **Toast Notifications** - User feedback for all actions
 
 ## 🛒 Shopping Flow
 
@@ -88,57 +102,107 @@ coaxx/
 
 ## 💾 Data Storage
 
-- **Cart**: Stored in `localStorage` as `coaxx-cart`
+- **Cart**: Stored in `localStorage` as `coaxxCart`
 - **Age Verification**: Stored in `localStorage` as `coaxx_age_confirmed`
-- **Products**: Static data in `main.js` (PRODUCTS array)
+- **Admin Login**: Stored in `localStorage` as `coaxxAdminLoggedIn`
+- **Product Draft**: Stored in `localStorage` as `coaxxProductsDraft` (admin only)
+- **Products**: Loaded from `products.json` file
 
-All data persists across browser sessions but stays local to the device.
+All data persists across browser sessions but stays local to the device. No external database or backend required.
 
 ## 🎨 Customization
 
-### Adding Products
-Edit the `PRODUCTS` array in `main.js`:
+### Managing Products
 
-```javascript
-const PRODUCTS = [
-  {
-    id: '1',
-    name: 'Product Name',
-    description: 'Product description',
-    price: 99.99,
-    sale_price: 79.99,  // Optional
-    stock_quantity: 50,
-    image_url: 'https://example.com/image.jpg',
-    featured: true,  // Optional
-  },
-  // Add more products...
-];
+#### Via Admin Dashboard (Recommended)
+1. Navigate to `/admin.html` in your browser
+2. Enter the admin password (default: `coaxx2025`)
+3. Use the UI to add, edit, or delete products
+4. Click "Save Draft" to save changes locally
+5. Click "Download JSON" to download the updated `products.json`
+6. Replace the `products.json` file in your repository
+7. Commit and push the changes
+
+#### Manually Editing products.json
+Edit the `products.json` file directly:
+
+```json
+{
+  "id": "unique-product-id",
+  "name": "Product Name",
+  "slug": "product-name",
+  "category": "toys",
+  "collections": ["Barely Proper", "Noir Siren"],
+  "price": 79.00,
+  "originalPrice": 99.00,
+  "currency": "USD",
+  "shortDescription": "Brief product description",
+  "description": "Detailed product description",
+  "experienceLevel": "Beginner",
+  "intensityLevel": 2,
+  "materials": ["Body-safe silicone", "ABS"],
+  "features": ["Rechargeable", "Water-resistant"],
+  "colors": ["Black", "Wine Red"],
+  "sizesAvailable": [],
+  "images": ["https://example.com/image.jpg"],
+  "isFeatured": true,
+  "isNew": true,
+  "inStock": true,
+  "tags": ["wand", "body-safe", "quiet"],
+  "paymentLink": "https://buy.stripe.com/...",
+  "subscription": false,
+  "bundleItems": [],
+  "careNotes": "Care instructions here"
+}
 ```
 
-### Changing Colors
+### Changing Admin Password
+Edit the password in `admin.js`:
+
+```javascript
+const ADMIN_PASSWORD = 'your-secure-password-here';
+```
+
+**Important**: Change this before deploying to production!
+
+### Changing Brand Colors
 Edit CSS variables in `styles.css`:
 
 ```css
 :root {
-  --primary: #dc2626;     /* Red */
-  --secondary: #d97706;   /* Gold/Amber */
-  --accent: #6b7280;      /* Gray */
+  --primary: #dc2626;     /* Deep Red */
+  --secondary: #d97706;   /* Luminous Gold */
+  --accent: #374151;      /* Charcoal Grey */
 }
 ```
 
-### Adding Pages
-1. Copy an existing HTML file as template
-2. Update the content between `<main>` tags
-3. Keep header and footer consistent
-4. Update navigation links if needed
+### Changing Collections
+The four collections are:
+- **Barely Proper** - Softer, beginner-friendly
+- **Pretty Ruthless** - Spicier, more bold
+- **Femme Obscura** - Darker, luxe, advanced
+- **Noir Siren** - Black-and-gold, sultry
+
+Update collection names in:
+1. Product data (collections array)
+2. Collection filters in shop.html
+3. Collection descriptions in app.js (`renderFeaturedCollections` function)
 
 ## 🔒 Privacy & Security
 
 - **Age Verification** - Modal gate requiring 18+ confirmation
-- **Discreet Messaging** - Privacy-focused copy throughout
-- **Local Storage Only** - No data sent to external servers
-- **No Tracking** - No analytics or third-party scripts
+- **Discreet Packaging** - Plain packaging messaging throughout
+- **Local Storage Only** - No data sent to external servers (except chosen payment processor)
+- **No Tracking** - No analytics or third-party scripts by default
 - **Static Content** - No server-side processing or databases
+- **Password-Protected Admin** - Simple but effective admin authentication
+- **No API Keys in Frontend** - Use external payment links (Stripe Payment Links, PayPal, etc.)
+
+### Important Security Notes
+1. **Change the admin password** in `admin.js` before deploying
+2. **Never commit** real payment credentials to the repository
+3. **Use HTTPS** when deploying (required for secure checkout)
+4. **External payment links** keep your site secure - no sensitive data in frontend
 
 ## 🌐 Deployment
 
@@ -169,13 +233,33 @@ Simply upload all files to any static web hosting service:
 - Firebase Hosting
 - Any traditional web hosting (upload via FTP)
 
-## 📝 Notes
+## 📝 Important Notes
 
-- This is a **demo/template** e-commerce site
-- Checkout is for demonstration only (no real payment processing)
-- Product images use Unsplash placeholder images
-- All product data is static (no backend database)
-- For production use, you'd need to integrate real payment processing and backend
+### About This Site
+- **Adult Content**: This is an intimacy/adult products store. Age verification is required.
+- **Static Architecture**: Everything runs client-side - no backend or database needed
+- **Product Catalog**: 21 curated products included in `products.json`
+- **Images**: Currently using Unsplash placeholder images - replace with actual product photos
+- **Payment Processing**: Uses external payment links (Stripe Payment Links, PayPal, Cash App)
+- **Admin Dashboard**: Client-side only - changes must be manually committed to git
+
+### For Production Use
+1. **Replace placeholder images** with actual product photography
+2. **Update product data** with real inventory, descriptions, and pricing
+3. **Set up payment links** in your Stripe/PayPal/Cash App account
+4. **Change admin password** in `admin.js`
+5. **Add real contact information** in contact.html
+6. **Review and customize** privacy policy, terms of service, and shipping information
+7. **Test checkout flow** thoroughly before going live
+8. **Consider adding** email notifications via a service like Formspree for contact forms
+9. **Set up SSL/HTTPS** (required for secure checkout)
+10. **Consider age verification compliance** based on your jurisdiction
+
+### Content Guidelines
+- Product descriptions are **classy and informative**, never explicit
+- Focus on **body safety**, materials, and experience level
+- Emphasize **privacy and discretion** throughout
+- Use **inclusive language** welcoming to all bodies and identities
 
 ## 🎯 Use Cases
 

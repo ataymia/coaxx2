@@ -4,10 +4,12 @@
 :root {
   --background: #ffffff;
   --foreground: #1a1a1a;
-  --primary: #dc2626; /* Red */
-  --secondary: #d97706; /* Gold/Amber */
-  --accent: #6b7280; /* Gray */
-  --dark-accent: #374151; /* Darker gray */
+  --primary: #dc2626; /* Deep Red */
+  --secondary: #d97706; /* Luminous Gold */
+  --accent: #374151; /* Charcoal Grey */
+  --dark-accent: #111827; /* Darker charcoal */
+  --off-white: #f9fafb;
+  --deep-plum: #581c87;
 }
 
 * {
