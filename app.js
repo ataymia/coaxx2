@@ -574,12 +574,21 @@ function initProductPage(productId) {
   if (shortDescEl) shortDescEl.textContent = product.shortDescription || '';
   if (descEl) descEl.textContent = product.description || '';
   
+  // Set collections
+  const collectionsContainer = document.getElementById('product-collections');
+  if (collectionsContainer && product.collections && product.collections.length > 0) {
+    collectionsContainer.innerHTML = product.collections.map(col => 
+      `<span style="font-size: 0.75rem; padding: 0.25rem 0.75rem; background: linear-gradient(135deg, #dc2626, #d97706); color: white; border-radius: 9999px; text-transform: uppercase; font-weight: 600;">${col}</span>`
+    ).join('');
+  }
+  
   // Set prices
   const hasDiscount = product.originalPrice && product.originalPrice > product.price;
   const displayPrice = product.price;
   
   const priceEl = document.getElementById('product-price');
   const originalPriceEl = document.getElementById('product-original-price');
+  const discountBadge = document.getElementById('product-discount-badge');
   
   if (priceEl) {
     priceEl.textContent = formatPrice(displayPrice);
@@ -589,6 +598,78 @@ function initProductPage(productId) {
   if (originalPriceEl && hasDiscount) {
     originalPriceEl.textContent = formatPrice(product.originalPrice);
     originalPriceEl.style.display = 'inline';
+  }
+  
+  if (discountBadge && hasDiscount) {
+    const discountPercent = calculateDiscountPercent(product.originalPrice, product.price);
+    discountBadge.textContent = `${discountPercent}% OFF`;
+    discountBadge.style.display = 'block';
+  }
+  
+  // Set experience level
+  const experienceContainer = document.getElementById('experience-level-container');
+  if (experienceContainer && product.experienceLevel) {
+    experienceContainer.innerHTML = `
+      <div style="background: #f3f4f6; padding: 0.75rem 1rem; border-radius: 0.5rem; display: inline-block;">
+        <span style="font-weight: 600; color: #374151;">Experience Level:</span>
+        <span style="color: #111827; font-weight: 600; margin-left: 0.5rem;">${product.experienceLevel}</span>
+      </div>
+    `;
+  }
+  
+  // Set materials
+  const materialsContainer = document.getElementById('materials-container');
+  if (materialsContainer && product.materials && product.materials.length > 0) {
+    materialsContainer.innerHTML = `
+      <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">Materials</h3>
+      <p style="color: #374151;">${product.materials.join(', ')}</p>
+    `;
+  }
+  
+  // Set features
+  const featuresContainer = document.getElementById('features-container');
+  if (featuresContainer && product.features && product.features.length > 0) {
+    featuresContainer.innerHTML = `
+      <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">Features</h3>
+      <ul style="display: flex; flex-direction: column; gap: 0.5rem; color: #374151;">
+        ${product.features.map(feat => `<li style="display: flex; align-items: center; gap: 0.5rem;"><span style="color: #dc2626;">✓</span> ${feat}</li>`).join('')}
+      </ul>
+    `;
+  }
+  
+  // Set colors/sizes
+  const variantsContainer = document.getElementById('variants-container');
+  if (variantsContainer) {
+    let variantsHTML = '';
+    
+    if (product.colors && product.colors.length > 0) {
+      variantsHTML += `
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Colors Available:</label>
+          <p style="color: #111827;">${product.colors.join(', ')}</p>
+        </div>
+      `;
+    }
+    
+    if (product.sizesAvailable && product.sizesAvailable.length > 0) {
+      variantsHTML += `
+        <div>
+          <label style="display: block; font-size: 0.875rem; font-weight: 600; color: #374151; margin-bottom: 0.5rem;">Sizes Available:</label>
+          <p style="color: #111827;">${product.sizesAvailable.join(', ')}</p>
+        </div>
+      `;
+    }
+    
+    variantsContainer.innerHTML = variantsHTML;
+  }
+  
+  // Set care notes
+  const careContainer = document.getElementById('care-notes-container');
+  if (careContainer && product.careNotes) {
+    careContainer.innerHTML = `
+      <h3 style="font-size: 1.125rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem;">Care & Maintenance</h3>
+      <p style="color: #374151; line-height: 1.75;">${product.careNotes}</p>
+    `;
   }
   
   // Set main image
