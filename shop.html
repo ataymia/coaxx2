@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Products - Coaxx</title>
+  <meta name="description" content="Browse our curated collection of premium products">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Age Gate Modal -->
+  <div id="age-gate" class="age-gate">
+    <div class="age-gate-content">
+      <div class="age-gate-logo">
+        <span class="logo-co">Co</span><span class="logo-ax">ax</span><span class="logo-x">x</span>
+      </div>
+      <h2>Age Verification Required</h2>
+      <p>You must be 18 years or older to enter this website. Please confirm your age to continue.</p>
+      <div class="age-gate-buttons">
+        <button id="age-confirm" class="btn-confirm">I am 18 or older - Enter Site</button>
+        <button id="age-decline" class="btn-decline">I am under 18 - Exit</button>
+      </div>
+      <p class="age-gate-legal">By entering this site, you agree to our Terms of Service and Privacy Policy.</p>
+    </div>
+  </div>
+
+  <!-- Header (same as index.html) -->
+  <header>
+    <div class="hot-ticker">
+      <div class="ticker-content">
+        <a href="product.html?id=1" class="ticker-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 2c-5.621 0-7.5 1.879-7.5 7.5V20h15V9.5C20 3.879 18.121 2 12.5 2z"/></svg>
+          <span>🔥 Premium Wireless Headphones</span>
+          <span class="ticker-badge">33% OFF</span>
+        </a>
+        <a href="product.html?id=3" class="ticker-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 2c-5.621 0-7.5 1.879-7.5 7.5V20h15V9.5C20 3.879 18.121 2 12.5 2z"/></svg>
+          <span>🔥 Designer Sunglasses</span>
+          <span class="ticker-badge">38% OFF</span>
+        </a>
+        <a href="product.html?id=5" class="ticker-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 2c-5.621 0-7.5 1.879-7.5 7.5V20h15V9.5C20 3.879 18.121 2 12.5 2z"/></svg>
+          <span>🔥 Wireless Keyboard</span>
+          <span class="ticker-badge">20% OFF</span>
+        </a>
+        <a href="product.html?id=1" class="ticker-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 2c-5.621 0-7.5 1.879-7.5 7.5V20h15V9.5C20 3.879 18.121 2 12.5 2z"/></svg>
+          <span>🔥 Premium Wireless Headphones</span>
+          <span class="ticker-badge">33% OFF</span>
+        </a>
+        <a href="product.html?id=3" class="ticker-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 2c-5.621 0-7.5 1.879-7.5 7.5V20h15V9.5C20 3.879 18.121 2 12.5 2z"/></svg>
+          <span>🔥 Designer Sunglasses</span>
+          <span class="ticker-badge">38% OFF</span>
+        </a>
+        <a href="product.html?id=5" class="ticker-item">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12.5 2c-5.621 0-7.5 1.879-7.5 7.5V20h15V9.5C20 3.879 18.121 2 12.5 2z"/></svg>
+          <span>🔥 Wireless Keyboard</span>
+          <span class="ticker-badge">20% OFF</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="header-nav">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-co">Co</span><span class="logo-ax">ax</span><span class="logo-x">x</span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="shop.html">Shop</a>
+          <a href="collections.html">Collections</a>
+          <a href="deals.html">Deals</a>
+        </nav>
+
+        <form class="search-form">
+          <input type="text" class="search-input" placeholder="Search products..." />
+          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </form>
+
+        <div class="header-actions">
+          <a href="cart.html" class="cart-button">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="cart-badge" style="display: none;">0</span>
+          </a>
+          
+          <button id="mobile-menu-button" class="mobile-menu-button">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="mobile-menu">
+        <form class="mobile-search-form search-form">
+          <input type="text" class="search-input" placeholder="Search products..." />
+          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </form>
+        <nav class="mobile-nav-links">
+          <a href="shop.html">Shop</a>
+          <a href="collections.html">Collections</a>
+          <a href="deals.html">Deals</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container" style="max-width: 1280px; margin: 0 auto; padding: 3rem 1rem;">
+      <!-- Breadcrumbs -->
+      <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <ol style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
+          <li>
+            <a href="index.html" style="color: #6b7280; transition: color 0.2s;">Home</a>
+          </li>
+          <li>
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </li>
+          <li style="color: #111827; font-weight: 500;">Shop</li>
+        </ol>
+      </nav>
+
+      <!-- Header -->
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-size: 2.25rem; font-weight: bold; color: #111827; margin-bottom: 0.5rem;">Shop All Products</h1>
+        <p style="color: #6b7280;">Discover our curated collection of premium products</p>
+      </div>
+
+      <!-- Filters -->
+      <div style="margin-bottom: 2rem; display: flex; flex-wrap: gap: 1rem;">
+        <select style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; background: white;">
+          <option>All Categories</option>
+          <option>Electronics</option>
+          <option>Fashion</option>
+          <option>Accessories</option>
+        </select>
+        
+        <select style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; background: white;">
+          <option>Sort By</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest</option>
+          <option>Popular</option>
+        </select>
+        
+        <button class="btn btn-primary" style="padding: 0.5rem 1.5rem;">
+          Filter
+        </button>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="product-grid" class="product-grid">
+        <!-- Products will be rendered here by JavaScript -->
+      </div>
+
+      <!-- Load More -->
+      <div style="margin-top: 3rem; text-align: center;">
+        <button style="padding: 0.75rem 2rem; background: #1f2937; color: white; font-weight: 600; border-radius: 0.5rem; transition: background 0.2s;">
+          Load More Products
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content container" style="max-width: 1280px; margin: 0 auto;">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="logo-co">Co</span><span class="logo-ax">ax</span><span class="logo-x">x</span>
+          </div>
+          <p style="font-size: 0.875rem; color: #9ca3af;">
+            Premium ecommerce for modern shoppers.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="shop.html">All Products</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="deals.html">Deals</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Coaxx. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
